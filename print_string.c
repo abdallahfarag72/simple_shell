@@ -11,7 +11,7 @@ void print_string(const char *str)
 	unsigned int len;
 
 	len = 0;
-	while (str[0])
+	while (str[len])
 	{
 		len++;
 	}
