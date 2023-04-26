@@ -41,7 +41,7 @@ void execute_command(char *input, char *file_name, int line_number)
 				_putchar(line_number + '0');
 				print_string(": ");
 				print_string(argv[0]);
-				print_string(": command not found\n");
+				print_string(": not found\n");
 				exit(1);
 			}
 			argv[0] = command_path;
