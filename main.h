@@ -14,4 +14,5 @@ int _strcmp(char *s1, char *s2, size_t n);
 int _strlen(char *s);
 int is_path(char *input);
 int _putchar(char c);
+void print_error(char *file_name, char *command, int line_number);
 #endif

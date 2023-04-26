@@ -36,12 +36,8 @@ void execute_command(char *input, char *file_name, int line_number)
 			command_path = find_command_path(argv[0], environ);
 			if (command_path == NULL)
 			{
-				print_string(file_name);
-				print_string(": ");
-				_putchar(line_number + '0');
-				print_string(": ");
-				print_string(argv[0]);
-				print_string(": not found\n");
+				print_error(file_name, argv[0], line_number);
+				free(argv);
 				exit(1);
 			}
 			argv[0] = command_path;
@@ -54,5 +50,6 @@ void execute_command(char *input, char *file_name, int line_number)
 	{
 		/*Parent process*/
 		wait(NULL);
+		free(argv);
 	}
 }

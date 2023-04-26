@@ -13,9 +13,18 @@
 char **split_string(char *str, char *separator)
 {
 	char *token, **words;
-	int i;
+	int i, count;
 
-	words = malloc(100 * sizeof(char *));
+	count = 0;
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == separator[0])
+		{
+			count++;
+		}
+	}
+	count++;
+	words = malloc(count * sizeof(char *));
 	if (words == NULL)
 	{
 		exit(1);
@@ -23,12 +32,11 @@ char **split_string(char *str, char *separator)
 
 	token = strtok(str, separator);
 	i = 0;
-	while (token != NULL)
+	while (token != NULL && i < count)
 	{
 		words[i] = token;
 		i++;
 		token = strtok(NULL, separator);
 	}
 	return (words);
-	free(words);
 }
