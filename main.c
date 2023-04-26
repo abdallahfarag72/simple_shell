@@ -21,10 +21,12 @@ int main(int argc, char **argv)
 	line_number = 0;
 	while (1)
 	{
-		print_string("# ");
+		if (isatty(STDIN_FILENO))
+			print_string("# ");
 		if (getline(&input, &input_size, stdin) == -1)
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
 		line_number++;
