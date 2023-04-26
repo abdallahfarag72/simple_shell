@@ -9,7 +9,7 @@
  * Return: array of strings
  */
 
-char **split_string(char *str)
+char **split_string(char *str, char *separator)
 {
 	char *token, **words;
 	int i;
@@ -20,13 +20,13 @@ char **split_string(char *str)
 		exit(1);
 	}
 	
-	token = strtok(str, " ");
+	token = strtok(str, separator);
 	i = 0;
 	while (token != NULL)
 	{
 		words[i] = token;
 		i++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, separator);
 	}
 	return (words);
 	free(words);
